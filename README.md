@@ -1,2 +1,3 @@
 # MessOS
- A virtual OS run in a browser
+
+ A Sleek, up-to-date OS run in a browser (No false advertising)
