@@ -1,0 +1,234 @@
+@import url("/stylesheets/template.css");
+
+/* Fonts */ 
+@font-face {
+    font-family: "Unifont";
+    src: url('/fonts/unifont-15.0.01.ttf');
+    font-weight: 400;
+  }
+
+/* General Settings */
+*{
+    user-select: none;
+}
+
+body {
+    background-image: url("/images/GrassyBoi.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+header {
+    background-color: #ccc;
+    border-style: inset;
+    border-width: 1em;
+    text-align: center;
+}
+
+iframe {
+    border-style: inset;
+    border-width: 2px;
+    height: 400px;
+    width: 600px;
+    overflow: auto;
+}
+
+/* Beginning of creating the styling for our 'Taskbar' (Bottom of the page) */
+
+#startListActive
+{
+    background-color: #AAA;
+    border-style: outset;
+    border-width: 2px;
+    position: fixed;
+    left: 0;
+    top: 45%;
+    overflow-y:scroll;
+    width: 300px;
+    height:50%;
+    margin:0;
+    padding:0;
+    transition: top 1s;
+    z-index: var(--infinity)-1;
+}
+/*ignore this im just trying some animation*/
+#startListInactive {
+    background-color: #AAA;
+    border-style: outset;
+    border-width: 2px;
+    position: fixed;
+    left: 0;
+    top: 100%;
+    overflow-y:scroll;
+    width: 300px;
+    height:50%;
+    margin:0;
+    padding:0;
+    transition: top 1s;
+    z-index: var(--infinity)-1;
+}
+
+.navbar {
+    height: 5%;
+    width: 100%;
+    background-color: var(--baseColour);
+    overflow: hidden;
+    position: fixed;
+    z-index: var(--infinity);
+    left: 0;
+    top: 95%;
+    border-style: outset;
+    border-width: 2px;
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.navbar-nav {
+    font-size: 1em;
+    display: flex;
+    /* align-items: center; */
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    padding-bottom: auto;
+    /* padding-top: auto; */
+    list-style: none;
+}
+.startListContents
+{
+    height: 50px;
+    background-color: #AAA;
+    overflow: hidden;
+    text-align: center;
+    z-index: var(--infinity);
+    border-style: outset;
+    border-width: 2px;
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+
+    font-size: 1em;
+    /* align-items: left; */
+    list-style: none;
+}
+.startListContents:active {
+    border-style: inset;
+}
+
+.nav-item {
+    background-color: #AAA;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+    margin: 2px;
+    border-style: outset;
+    border-width: 2px;
+}
+
+/* Indenting a button on-click */
+.nav-item:active {
+    border-style: inset;
+}
+
+#changelog {
+    margin-left: auto;
+}
+
+#time {
+    background-color: #999;
+    /* margin-left: auto; */
+    border-style: inset;
+    border-width: 2px;
+    font-size: smaller;
+    width: fit-content;
+    padding:0.2%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+}
+
+/* Draggable elements */
+.draggable {
+    position: absolute;
+	z-index: 9;
+    background-color: #f1f1f1;
+    /* border-left:2px solid #d3d3d3; */
+    /* border-right:2px solid#d3d3d3; */
+    border-bottom:2px solid #d3d3d3;
+    border-radius:5px 5px 0px 0px;
+    resize: both;
+    overflow:hidden;
+}
+  
+.draggableheader {
+    margin: 0px;
+    padding: 5px;
+    padding-right: 0px;
+    cursor: move;
+    border-radius:5px 5px 0px 0px;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+}
+.minButton{
+    float: right;
+    background-image: linear-gradient(160deg, #2196F3,#0062ff);
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    margin-right: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 4px;
+    cursor:pointer;
+}
+.maxButton{
+    float: right;
+    background-image: linear-gradient(160deg, #2196F3,#0062ff);
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    margin-right: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 4px;
+    cursor:pointer;
+}
+.deleteButton{
+    float: right;
+    background-image: linear-gradient(160deg, red, darkred);
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    margin-right: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+.invisibleOverlay {
+    background-color: #0000;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    z-index : var(--infinity);
+    position: absolute;
+}
+
+/* Temporary testing */
+#test {
+	text-decoration: none; /* I added this just to get rid of the "HEY IT'S EMPTY AND USELESS" error */
+}

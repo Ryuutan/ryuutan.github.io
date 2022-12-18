@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/OS.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <script src="/scripts/taskManager.js"></script>
+    
+    <title>MessOS v0.1.2</title>
+    
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item" onclick = "toggleStartDisplay(document.getElementById('startListInactive')||document.getElementById('startListActive'),'block');">
+                Start</li>
+            <li class="nav-item" id="changelog" onclick = "popUp('/htmls/changelog.html','Changelog')">
+                Changelog</li>
+            <li class="nav-item" id="time"></li>
+        </ul>
+    </nav>
+    <ul id="startListInactive">
+        <li class="startListContents" onclick = "popUp('/htmls/idler.html','Game')">
+            Modify Computer</li>
+        <li class="startListContents" onclick = "popUp('/htmls/trashpile.html','The Horror!')">
+            The Trashpile</li>
+        <li class="startListContents" onclick = "popUp('https:/\/pmotschmann.github.io/Evolve/','Evolve by Demagorddon')">
+            Evolve</li>
+        <li class="startListContents" onclick = "popUp('https:/\/seiyria.com/Roguathia/','Roguathia')">
+            Roguathia</li>
+        <li class="startListContents" onclick = "popUp('https:/\/www.bagofholding.cloud/sheets/cl9hus7uk962509ig2k3yg6ey','Inventory Management')">
+            Inventory</li>
+        <li class="startListContents">
+            Settings</li>
+        <li class="startListContents" onclick = "popUp('/htmls/brainstorming.html','Random Bullshit GO')">
+            LOOOOOORE!</li>
+        <li class="startListContents" onclick = "popUp('/htmls/dungeonMap.html','Dungeon')">
+            Dungeon</li>
+    </ul>
+    
+    <main id="main">
+    
+    </main>
+    
+</body>
+
+</html>
