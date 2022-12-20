@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" type="text/css" href="/stylesheets/Idler.css">
+        <script src="/scripts/idler.js"></script>
         <link rel="icon" type="image/x-icon" href="/images/favicon.png">
         
         <title>IdleOS</title>
@@ -23,15 +24,15 @@
         <main>
 
             <div class="resourceBox">
-                <p class="resource" id="storageDisp" onclick="">Storage: N/A</p>
+                <p class="resource" id="storageDisp">Storage: N/A</p>
                 <p class="resource" id="ramDisp">RAM: N/A</p>
                 <p class="resource" id="cpuDisp">CPU: N/A</p>
                 <p class="resource" id="gpuDisp">GPU: N/A</p>
             </div>
 
             <div class="actionBox">
-                <a class="button" id="storageAdd">Add Storage </a>
-                <a class="button" id="ramAdd">Add RAM </a>
+                <a class="button" id="storageAdd" onclick="save();">Add Storage </a>
+                <a class="button" id="ramAdd" onclick="load();">Add RAM </a>
                 <a class="button" id="cpuAdd">Add CPU </a>
                 <a class="button" id="gpuAdd">Add GPU </a>
             </div>
