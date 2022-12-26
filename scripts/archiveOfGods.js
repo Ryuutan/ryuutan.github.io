@@ -19,3 +19,26 @@ if(!document.getElementsByClassName("invisibleOverlay")[0]) {
     invisibleOverlay.style.height = elmnt.offsetHeight+'px';
     elmnt.appendChild(invisibleOverlay);
 }
+
+/*
+    On this fine christmas day of 2022 (12/25/2022), Sam Kadmon proudly announces his newest abomination of overengineered 
+    code. He was in the midst of making a function that takes in a window and focuses on it when clicked, but 
+    unfortunately there was a lot of finnickiness involved in the process when combined with the deselect code.
+    He attempted many things, such as nested ternary operators, putting the function in every part of the draggin code
+    etc, all for naught. All night he toiled and tumbled, when finally he witnessed the light at the end of the tunnel 
+    at 3:30AM of 12/26/2022 where he solved it with the aid of regular expressions. Finally with the code below he had 
+    successfully made something that worked. And it is in this moment he realized he coult have simplified the code and 
+    stuck it into the popup function.
+    
+    Queue the tears.
+*/
+function setActiveWindow(elmnt) {
+    if(getType(elmnt) != "MouseEvent") elmnt.className += " activeWindow";
+    else if (getType(elmnt) == "MouseEvent") {
+        let temp = elmnt?.toElement?.parentNode;
+        while(temp?.id != /drag[1-9]+/ && temp.parentNode != document.getElementById("main")) {
+            temp = temp.parentNode;
+        }
+        console.log(/activeWindow/.test(temp.className));//temp.className.search("activeWindow"));
+         if(!/activeWindow/.test(temp.className)) temp.className += " activeWindow"
+    }

@@ -1,6 +1,6 @@
 //Tileset
 const dungeonWalls = '+';
-const dungeonFloor = '\'';
+const dungeonFloor = '.';
 
 // Master Function
 function createDungeon() {

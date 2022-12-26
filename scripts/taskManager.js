@@ -1,6 +1,13 @@
 var popupPageCounter = 0;
 var recency = 0; //<-- gonna be used eventually right?
- 
+
+
+
+// Better typeof code
+function getType(elmnt)
+{
+    return ({}).toString.call(elmnt).match(/\s([a-zA-Z]+)/)[1]
+}
 
 // Invisible overlay code for whenever we resize or move a window
 function addInvisibleOverlay() {
@@ -26,7 +33,7 @@ function addInvisOverlayTemporarily(ms) {
 }
 // Time Display
 function refreshTime() {
-    var date = new Date();
+    var date = new Date();  
     var hours = date.getHours();
     var days = date.getDay(); 
     var minutes = date.getMinutes();
@@ -41,6 +48,8 @@ function refreshTime() {
     document.getElementById("time").innerText = strTime;
 }
     setInterval(refreshTime, 999);
+
+//https://media.tenor.com/QyzI11kM5yYAAAAd/jerma-jerma-sus.gif
 
 function popUp(link, title) {
     // Create the container for the popup under the main element
@@ -83,6 +92,7 @@ function popUp(link, title) {
     // Create the iframe containing the window's content
 	var viewport = document.createElement("iframe");
 	viewport.src = link;
+    viewport.id = "iframe"+popupPageCounter;
 
     // Create an observer that checks to see if the window is being resized so that an overlay can be applied
     // over the whole screen to prevent issues down the line
@@ -100,21 +110,37 @@ function popUp(link, title) {
     titleLine.appendChild(minButton);
 	display.appendChild(viewport);
     
+    var inactiveOverlay = document.createElement("div");
+    inactiveOverlay.className = "inactiveOverlay";
+    inactiveOverlay.style.top = titleLine.offsetHeight+'px';
+    inactiveOverlay.style.left = 0+'px';
+    display.appendChild(inactiveOverlay);
+
+    // Make it so that when you click on the window it focuses the window
+
+    display.onclick = function(){ unsetActiveWindow(); setActiveWindow(display);}
+    titleLine.onclick = function(){ unsetActiveWindow(); setActiveWindow(display);}
+    inactiveOverlay.onclick = function(){ unsetActiveWindow(); setActiveWindow(display);}
+
     document.getElementById("changelog").before(bottomIcon);
     
     popupPageCounter++;
-    
+    unsetActiveWindow();
+    setActiveWindow(display);
 	dragElement(display);
 }
 /*This function is to help with the resizing of the windows by making the contents 
 of the window div match the width and height of the div, allowing us to resize all sites freely*/
 function refreshWindows() {
     if(document.getElementsByClassName("draggable")[0]) {
-        for(var i = 0; i < document.getElementsByClassName("draggable").length; i++) {
-            //Im doing it like this so that if we make changes to the way the window is structured
-            //we can still have this function work, though that O(n^2) notation 
-            //is gonna be looking quite nice on our portfolios
-            for(var j = 0; j < document.getElementsByClassName("draggable")[i].childNodes.length; j++) {
+        for(let k = 0; k < document.getElementsByClassName("inactiveOverlay").length; k++) {
+             document.getElementsByClassName("inactiveOverlay")[k].style.width = document.getElementsByClassName("inactiveOverlay")[k].parentNode.offsetWidth+'px';
+             document.getElementsByClassName("inactiveOverlay")[k].style.height = document.getElementsByClassName("inactiveOverlay")[k].parentNode.offsetHeight - document.getElementsByClassName("inactiveOverlay")[k].parentNode.children[0].offsetHeight +'px';
+
+        }
+        for(let i = 0; i < document.getElementsByClassName("draggable").length; i++) {
+            //Im doing it like this so that if we make changes to the way the window is structured we can still have this function work
+            for(let j = 0; j < document.getElementsByClassName("draggable")[i].childNodes.length; j++) {
                 if(document.getElementsByClassName("draggable")[i].childNodes[j].nodeName == "IFRAME") {
                     document.getElementsByClassName("draggable")[i].childNodes[j].style.width = document.getElementsByClassName("draggable")[i].style.width;
                     document.getElementsByClassName("draggable")[i].childNodes[j].style.height = document.getElementsByClassName("draggable")[i].style.height;
@@ -138,32 +164,31 @@ function dragElement(elmnt) {
     }
 
     function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // check whether the header is on the screen
-    checkBounds(e);
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // check whether the header is on the screen
+        checkBounds(e);
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     
-    addInvisibleOverlay();
+        addInvisibleOverlay();
     }
 
     function checkBounds(e) {
@@ -182,12 +207,28 @@ function dragElement(elmnt) {
         if(elmnt.offsetTop + elmnt.offsetHeight - pos2 > window.innerHeight * 0.96) pos2 = 0;
     }
 
-  function closeDragElement() {
+    function closeDragElement() {
         // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
         removeInvisibleOverlay();
     }
+}
+function setActiveWindow(w) {
+    if(!/activeWindow/.test(w.className)) 
+    {w.className += " activeWindow";
+    w.lastChild.style.display = "none";
+    }
+}
+
+function unsetActiveWindow()
+{
+    for(var i = 0; i < document.getElementsByClassName("draggable").length; i++) {
+        document.getElementsByClassName("draggable")[i].lastChild.style.display = "block";
+        document.getElementsByClassName("draggable")[i].classList.remove("activeWindow");
+        //console.log(document.getElementsByClassName("draggable")[i].id)//?.classList?.remove("activeWindow")
+    }
+    //console.log(document.getElementsByClassName("draggable").length);
 }
 
 function maximizeWindow(w) {
@@ -221,5 +262,4 @@ else elmnt.style.display = disp;
 function toggleStartDisplay(elmnt, disp) {
     if(elmnt.id == "startListActive") elmnt.id = "startListInactive";
     else elmnt.id = "startListActive";
-
 }
