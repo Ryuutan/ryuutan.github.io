@@ -84,8 +84,30 @@ function displayResource(displayId)
 function addResource(idValue) 
 {
     resources[idValue].amount += resources[idValue].clickValue;
-    resources[idValue].amount = Number(resources[idValue].amount.toFixed(3))
-    //Number(num2.toFixed(3))
-     
+    resources[idValue].amount = Number(resources[idValue].amount.toFixed(3));
     displayResource(idValue + "Disp");
+    playSound();
 }
+
+function playSound()
+{
+    var audio = new Audio('../sfx/plink.mp3');
+    audio.volume = audio.volume *= 0.1;
+    audio.play();
+
+}
+
+/*
+MAKE IDLE GAME:
+
+step ?: lore
+step 1: Resources
+step 2: buttahns
+step 3: money go up
+step 4: make money go up faster
+step 5: more types of money
+step 6: reset everything for money+
+step 7: repeat until lore complete
+step 1.5,2.5,3.5,3.75,3.875,4.5,5.5,6.28316,7.1,7.9: delete player progress
+step 8: reveal sequel (Other idle game on OS)
+*/

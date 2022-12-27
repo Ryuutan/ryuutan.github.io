@@ -152,6 +152,7 @@ iframe {
     border-radius:5px 5px 0px 0px;
     resize: both;
     overflow:hidden;
+    box-sizing: border-box;
 }
 .draggableheader {
     margin: 0px;

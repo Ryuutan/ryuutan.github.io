@@ -42,3 +42,4 @@ function setActiveWindow(elmnt) {
         console.log(/activeWindow/.test(temp.className));//temp.className.search("activeWindow"));
          if(!/activeWindow/.test(temp.className)) temp.className += " activeWindow"
     }
+}
