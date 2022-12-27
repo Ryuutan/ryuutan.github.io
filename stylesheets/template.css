@@ -11,9 +11,11 @@
 
 /* Variables */
 :root {
-    --infinity: 999999999998;
+    --infinity: 999999999999;
     --baseColour: #999;
   }
+
+
 
 * {
     font-family: "Unifont";

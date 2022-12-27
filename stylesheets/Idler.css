@@ -34,8 +34,12 @@ footer {
     background-color: #AAA;
 }
 
+.locked {
+    display: none;
+}
 .resource {
     margin: 20px;
+    display: block;
 }
 
 .actionBox {

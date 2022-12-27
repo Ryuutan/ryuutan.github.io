@@ -24,17 +24,17 @@
         <main>
 
             <div class="resourceBox">
-                <p class="resource" id="storageDisp">Storage: N/A</p>
-                <p class="resource" id="ramDisp">RAM: N/A</p>
-                <p class="resource" id="cpuDisp">CPU: N/A</p>
-                <p class="resource" id="gpuDisp">GPU: N/A</p>
+                <p class="resource" id="0Disp"> N/A </p>
+                <p class="resource" id="1Disp"> N/A </p>
+                <p class="resource" id="2Disp"> N/A </p>
+                <p class="resource" id="3Disp"> N/A </p>
             </div>
 
             <div class="actionBox">
-                <a class="button" id="storageAdd" onclick="save();">Add Storage </a>
-                <a class="button" id="ramAdd" onclick="load();">Add RAM </a>
-                <a class="button" id="cpuAdd">Add CPU </a>
-                <a class="button" id="gpuAdd">Add GPU </a>
+                <a class="button" onclick="addResource(0);"> Add Storage </a>
+                <a class="button" onclick="addResource(1);"> Add RAM </a>
+                <a class="button" onclick="addResource(2);"> Add CPU </a>
+                <a class="button" onclick="addResource(3);"> Add GPU </a>
             </div>
             
         </main>
