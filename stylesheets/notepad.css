@@ -1,0 +1,18 @@
+@import url("template.css");
+
+body{
+    margin:0;
+    padding:0;
+    background-color: #d4d45d;
+}
+
+#pad {
+    background-color: #d4d45d;
+    margin:0;
+    width:100vw;
+    height:100vh;
+    resize: none;
+    overflow: hidden;
+    border: none;
+    border-color: red;
+}

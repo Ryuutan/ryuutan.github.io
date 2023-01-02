@@ -53,6 +53,7 @@ function refreshTime() {
 
 function popUp(link, title) {
     // Create the container for the popup under the main element
+    playSound("triangle", 440, 0.1, 0.5)
     var main = document.getElementById("main");
 	var display = document.createElement("div");
 	display.id = "drag" + popupPageCounter;

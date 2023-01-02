@@ -1,0 +1,11 @@
+@import url("template.css");
+body{
+    margin: 0;
+    padding:0;
+}
+#textZone{
+    height:250px;
+    width:75%;
+    margin-right: auto;
+    display: block;
+}

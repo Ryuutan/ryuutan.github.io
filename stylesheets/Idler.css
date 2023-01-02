@@ -1,48 +1,64 @@
 @import url("template.css");
 
-body {
+body 
+{
     background-color: #ddd;
 } 
 
-main {
+main 
+{
     display: flex;
 }
 
-footer {
+footer 
+{
     float: right;
 }
 
-.button {
+.button 
+{
     background-color: var(--baseColour);
     user-select: none;
     border-style: outset;
     text-align: center;
-    width: min-content;
+    height: fit-content;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     margin-left: 20px;
+    flex-grow: 1;
 }
 
-.button:active {
+.button:active 
+{
     border-style: inset;
 }
 
-.resourceBox {
+#resourceBox 
+{
     width: 20%;
     background-color: #AAA;
 }
 
-.locked {
+.locked 
+{
     display: none;
 }
-.resource {
+.resource 
+{
     margin: 20px;
-    display: block;
+    display: flex;
 }
 
-.actionBox {
+#actionBox 
+{
     display: flex;
     width: 50%;
+}
+
+#upgradeBox
+{
+    display: flex;
+    width: 30%;
 }

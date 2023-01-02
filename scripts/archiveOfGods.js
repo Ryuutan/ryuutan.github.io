@@ -43,3 +43,11 @@ function setActiveWindow(elmnt) {
          if(!/activeWindow/.test(temp.className)) temp.className += " activeWindow"
     }
 }
+
+
+function playSound(name)
+{
+    var audio = new Audio('../sfx/'+name+'.mp3');
+    audio.volume *= 0.1;
+    audio.play();
+}
