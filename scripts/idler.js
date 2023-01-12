@@ -58,7 +58,7 @@ var upgrades =
         targetIdArray: [0], 
         priceIdArray: [0],
         priceArray: [16],
-        upgradeDescription: 'Adds +2 to the Storage byte gain per click' + parseUpgradePrice(upgrades[0][2], upgrades[0][3]) ,
+        upgradeDescription: 'Adds +2 to the Storage byte gain per click' ,
     },
     { 
         name: 'CPU Upgrade 1',
@@ -67,7 +67,7 @@ var upgrades =
         targetIdArray: [2], 
         priceIdArray: [0],
         priceArray: [32], 
-        upgradeDescription: 'Adds +2 to the CPU byte gain per click' + parseUpgradePrice(upgrades[1][2], upgrades[1][3]) ,
+        upgradeDescription: 'Adds +2 to the CPU byte gain per click' ,
     }
 ]
 
@@ -91,14 +91,7 @@ function parseUpgradePrice(priceIdArray, priceArray)
     return temp;
 }
 
-// Here be idlers! 
-// function load() 
-// {
-    // }
 
-    // function save() 
-    // {
-// }
 
 function updateTier(idValue)
 {
@@ -115,10 +108,7 @@ function displayResource(displayId)
     
     var tier = updateTier(idValue);
     var val = (res.amount / Math.pow(1024, tier)).toFixed(3);;
-    /*
     
-
-    */
     sizes = ["bytes", "kilobytes", "megabytes", "gigabytes", "terabytes", "petabytes", "exabytes", "feck ye i aint counting no more"];
     
     display.innerText = res.name + ": " + val + ' ' + sizes[tier];
@@ -135,6 +125,7 @@ function addResource(idValue)
 function unlock(idValue) 
 {
     resources[idValue].autoValue++;
+    playSound("triangle", 2200, 0.1, 1, true, 100);
 }
 
 
