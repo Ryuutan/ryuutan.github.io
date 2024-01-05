@@ -35,7 +35,6 @@ function addInvisOverlayTemporarily(ms) {
 function refreshTime() {
     var date = new Date();  
     var hours = date.getHours();
-    var days = date.getDay(); 
     var minutes = date.getMinutes();
     var day = date.getDate();
     var month = date.getMonth() + 1;
@@ -48,8 +47,7 @@ function refreshTime() {
     document.getElementById("time").innerText = strTime;
 }
     setInterval(refreshTime, 999);
-
-//https://media.tenor.com/QyzI11kM5yYAAAAd/jerma-jerma-sus.gif
+    //https://media.tenor.com/QyzI11kM5yYAAAAd/jerma-jerma-sus.gif
 
 function popUp(link, title) {
     // Create the container for the popup under the main element

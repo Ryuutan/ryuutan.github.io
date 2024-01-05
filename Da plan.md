@@ -24,7 +24,7 @@ So overall project plan:
 - Hide resources until they are unlocked
 - 
 
-yeah i should before i awaken in a cart somewhere, see ya in the morn we will work on this more ✓✓✓✓
+yeah i should before i awaken in a cart somewhere, see ya in the morn we will work on th is more ✓✓✓✓
 
 ## OS plan
 
